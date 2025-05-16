@@ -16,6 +16,8 @@ async function fetchGameData() {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
+    console.log(data);
+
     const homeTeam = data.homeTeam;
     const awayTeam = data.awayTeam;
 
