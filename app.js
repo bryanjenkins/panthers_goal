@@ -1,6 +1,3 @@
-// Replace {gameId} with the actual game ID
-setInterval(checkGoals, 15000); // Check every 15 seconds
-
 const gameId = '2024030216'; // Replace with the actual game ID
 const apiUrl = `https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
 
