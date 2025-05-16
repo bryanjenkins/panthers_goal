@@ -1,31 +1,69 @@
+// Replace {gameId} with the actual game ID
+setInterval(checkGoals, 15000); // Check every 15 seconds
+
+const gameId = '2024030216'; // Replace with the actual game ID
+const apiUrl = `https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
+
+const homeLogo = document.getElementById('homeLogo');
+const awayLogo = document.getElementById('awayLogo');
+const homeName = document.getElementById('homeName');
+const awayName = document.getElementById('awayName');
+const score = document.getElementById('score');
 const siren = document.getElementById('siren');
 const sirenSound = document.getElementById('sirenSound');
 
-let lastGoalCount = 0;
+let lastPanthersGoals = 0;
 
-async function checkGoals() {
+async function fetchGameData() {
   try {
-    const response = await fetch('https://api-web.nhle.com/v1/gamecenter/2024030216/boxscore');
+    const response = await fetch(apiUrl);
     const data = await response.json();
 
-    const panthersGoals = data.homeTeam.abbrev === 'FLA' ? data.homeTeam.goals : data.awayTeam.goals;
+    const homeTeam = data.homeTeam;
+    const awayTeam = data.awayTeam;
 
-    if (panthersGoals > lastGoalCount) {
-      lastGoalCount = panthersGoals;
+    // Set team names
+    homeName.textContent = homeTeam.name.default;
+    awayName.textContent = awayTeam.name.default;
+
+    // Set team logos
+    homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg`;
+    awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg`;
+
+    // Update score
+    score.textContent = `${homeTeam.abbrev} ${homeTeam.score} - ${awayTeam.score} ${awayTeam.abbrev}`;
+
+    // Determine if Panthers are home or away
+    let panthersGoals = 0;
+    if (homeTeam.abbrev === 'FLA') {
+      panthersGoals = homeTeam.score;
+    } else if (awayTeam.abbrev === 'FLA') {
+      panthersGoals = awayTeam.score;
+    }
+
+    // Check if Panthers scored
+    if (panthersGoals > lastPanthersGoals) {
       triggerSiren();
     }
+
+    lastPanthersGoals = panthersGoals;
+
   } catch (error) {
-    console.error('Error fetching goal data:', error);
+    console.error('Error fetching game data:', error);
   }
 }
 
 function triggerSiren() {
   siren.style.display = 'block';
+  siren.classList.add('spin');
   sirenSound.play();
   setTimeout(() => {
+    siren.classList.remove('spin');
     siren.style.display = 'none';
   }, 5000);
 }
 
-// Replace {gameId} with the actual game ID
-setInterval(checkGoals, 15000); // Check every 15 seconds
+// Initial fetch
+fetchGameData();
+// Fetch data every 15 seconds
+setInterval(fetchGameData, 15000);

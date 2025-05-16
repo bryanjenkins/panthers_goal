@@ -7,21 +7,34 @@
   <style>
     body {
       background-color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
     }
-
+    .team {
+      display: inline-block;
+      margin: 0 50px;
+    }
+    .team img {
+      width: 100px;
+      height: auto;
+    }
+    #score {
+      font-size: 2em;
+      margin: 20px 0;
+    }
     #siren {
       width: 100px;
       height: 100px;
       background: red;
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      margin: 20px auto;
       display: none;
     }
-
+    .spin {
+      animation: spin 1s linear infinite;
+    }
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -29,6 +42,15 @@
   </style>
 </head>
 <body>
+  <div class="team" id="homeTeam">
+    <img id="homeLogo" src="" alt="Home Team Logo">
+    <div id="homeName"></div>
+  </div>
+  <div class="team" id="awayTeam">
+    <img id="awayLogo" src="" alt="Away Team Logo">
+    <div id="awayName"></div>
+  </div>
+  <div id="score">Loading...</div>
   <div id="siren"></div>
   <audio id="sirenSound" src="siren.mp3" preload="auto"></audio>
   <script src="app.js"></script>
