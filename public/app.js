@@ -1,6 +1,5 @@
-const gameId = '2024030123'; // Replace with the actual game ID
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-const apiUrl = `${proxyUrl}https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
+const gameId = '2024030216'; // Replace with the actual game ID
+const apiUrl = `/.netlify/functions/nhl-proxy?gameId=${gameId}`;
 
 const homeLogo = document.getElementById('homeLogo');
 const awayLogo = document.getElementById('awayLogo');
