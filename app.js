@@ -23,9 +23,14 @@ async function fetchGameData() {
     homeName.textContent = homeTeam.name.default;
     awayName.textContent = awayTeam.name.default;
 
+    console.log('https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg');
+    console.log('https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg');
+
     // Set team logos
     homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg`;
     awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg`;
+
+    
 
     // Update score
     score.textContent = `${homeTeam.abbrev} ${homeTeam.score} - ${awayTeam.score} ${awayTeam.abbrev}`;
