@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+#scoreboard {
+  display: flex;
+  align-items: center;
+}
+
+#home-team, #away-team {
+  text-align: center;
+  margin: 0 20px;
+}
+
+#home-logo, #away-logo {
+  width: 100px;
+  height: auto;
+}
+
+#score h1 {
+  font-size: 2rem;
+  margin: 0 20px;
+}
