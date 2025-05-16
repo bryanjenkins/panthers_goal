@@ -16,36 +16,37 @@ async function fetchGameData() {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
+    console.log(response);
     console.log(data);
 
-    const homeTeam = data.homeTeam;
-    const awayTeam = data.awayTeam;
+    // const homeTeam = data.homeTeam;
+    // const awayTeam = data.awayTeam;
 
-    // Set team names
-    homeName.textContent = homeTeam.name.default;
-    awayName.textContent = awayTeam.name.default;
+    // // Set team names
+    // homeName.textContent = homeTeam.name.default;
+    // awayName.textContent = awayTeam.name.default;
 
-    // Set team logos
-    homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg`;
-    awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg`;
+    // // Set team logos
+    // homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg`;
+    // awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg`;
 
-    // Update score
-    score.textContent = `${homeTeam.abbrev} ${homeTeam.score} - ${awayTeam.score} ${awayTeam.abbrev}`;
+    // // Update score
+    // score.textContent = `${homeTeam.abbrev} ${homeTeam.score} - ${awayTeam.score} ${awayTeam.abbrev}`;
 
-    // Determine if Panthers are home or away
-    let panthersGoals = 0;
-    if (homeTeam.abbrev === 'FLA') {
-      panthersGoals = homeTeam.score;
-    } else if (awayTeam.abbrev === 'FLA') {
-      panthersGoals = awayTeam.score;
-    }
+    // // Determine if Panthers are home or away
+    // let panthersGoals = 0;
+    // if (homeTeam.abbrev === 'FLA') {
+    //   panthersGoals = homeTeam.score;
+    // } else if (awayTeam.abbrev === 'FLA') {
+    //   panthersGoals = awayTeam.score;
+    // }
 
-    // Check if Panthers scored
-    if (panthersGoals > lastPanthersGoals) {
-      triggerSiren();
-    }
+    // // Check if Panthers scored
+    // if (panthersGoals > lastPanthersGoals) {
+    //   triggerSiren();
+    // }
 
-    lastPanthersGoals = panthersGoals;
+    // lastPanthersGoals = panthersGoals;
 
   } catch (error) {
     console.error('Error fetching game data:', error);
