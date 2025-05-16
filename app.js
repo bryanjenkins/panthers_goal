@@ -1,5 +1,6 @@
-const gameId = '2024030216'; // Replace with the actual game ID
-const apiUrl = `https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
+const gameId = '2024030123'; // Replace with the actual game ID
+const proxyUrl = 'https://corsproxy.io/?';
+const apiUrl = `${proxyUrl}https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
 
 const homeLogo = document.getElementById('homeLogo');
 const awayLogo = document.getElementById('awayLogo');
@@ -23,14 +24,9 @@ async function fetchGameData() {
     homeName.textContent = homeTeam.name.default;
     awayName.textContent = awayTeam.name.default;
 
-    console.log('https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg');
-    console.log('https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg');
-
     // Set team logos
     homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/${homeTeam.abbrev}_light.svg`;
     awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/${awayTeam.abbrev}_light.svg`;
-
-    
 
     // Update score
     score.textContent = `${homeTeam.abbrev} ${homeTeam.score} - ${awayTeam.score} ${awayTeam.abbrev}`;
