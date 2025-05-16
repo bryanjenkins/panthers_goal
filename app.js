@@ -1,5 +1,5 @@
 const gameId = '2024030123'; // Replace with the actual game ID
-const proxyUrl = 'https://corsproxy.io/?';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const apiUrl = `${proxyUrl}https://api-web.nhle.com/v1/gamecenter/${gameId}/boxscore`;
 
 const homeLogo = document.getElementById('homeLogo');
