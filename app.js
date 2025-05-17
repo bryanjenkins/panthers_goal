@@ -14,17 +14,17 @@ async function fetchGameData() {
 
     if (data && data.games && data.games.length > 0) {
       console.log(data);
-      
+
       const game = data.games[0];
       const homeTeam = game.teams.home;
       const awayTeam = game.teams.away;
 
       homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/FLA_light.svg`;
-      homeName.textContent = homeTeam.name;
+      homeName.textContent = homeTeam.shortName;
       homeScore.textContent = homeTeam.score;
 
       awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/TOR_light.svg`;
-      awayName.textContent = awayTeam.name;
+      awayName.textContent = awayTeam.shortName;
       awayScore.textContent = awayTeam.score;
 
       if (homeTeam.score > awayTeam.score) {
