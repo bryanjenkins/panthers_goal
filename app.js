@@ -17,11 +17,11 @@ async function fetchGameData() {
       const homeTeam = game.teams.home;
       const awayTeam = game.teams.away;
 
-      homeLogo.src = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${homeTeam.id}.svg`;
+      homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/FLA_light.svg`;
       homeName.textContent = homeTeam.name;
       homeScore.textContent = homeTeam.score;
 
-      awayLogo.src = `https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/${awayTeam.id}.svg`;
+      awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/TOR_light.svg`;
       awayName.textContent = awayTeam.name;
       awayScore.textContent = awayTeam.score;
 
