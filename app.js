@@ -13,6 +13,8 @@ async function fetchGameData() {
     const data = await response.json();
 
     if (data && data.games && data.games.length > 0) {
+      console.log(data);
+      
       const game = data.games[0];
       const homeTeam = game.teams.home;
       const awayTeam = game.teams.away;
