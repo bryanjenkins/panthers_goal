@@ -21,13 +21,13 @@ async function fetchGameData() {
 
       homeLogo.src = `https://assets.nhle.com/logos/nhl/svg/FLA_light.svg`;
       homeName.textContent = homeTeam.shortName;
-      homeScore.textContent = homeTeam.score;
+      homeScore.textContent = game.scores.FLA;
 
       awayLogo.src = `https://assets.nhle.com/logos/nhl/svg/TOR_light.svg`;
       awayName.textContent = awayTeam.shortName;
-      awayScore.textContent = awayTeam.score;
+      awayScore.textContent = game.scores.TOR;
 
-      if (homeTeam.score > awayTeam.score) {
+      if (game.scores.FLA > game.scores.TOR) {
         siren.play();
       }
     }
